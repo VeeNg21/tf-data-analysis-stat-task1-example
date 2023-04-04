@@ -5,6 +5,7 @@ from scipy.stats import lognorm
 chat_id = 1374771107 # Ваш chat ID, не меняйте название переменной
 
 def solution(x: np.array) -> float:
-    shape, loc, scale = lognorm.fit(x, floc=0)
-    a = np.exp(loc)
-    return a
+    mu = np.mean(np.log(x))
+    sigma = np.std(np.log(x))
+    a_hat = np.exp(mu - sigma**2/2)
+    return a_hat
